@@ -55,16 +55,13 @@ app.use("/api/v1", require("./routes/api/v1/web_api"));
 
 if (process.env.NODE_ENV === "production") {
   // js and css files
-  app.use(express.static("./build"));
+  app.use(express.static(path.join(__dirname, './build')));
+  // app.use(express.static("./build"));
   // index.html
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "build"));
+    res.sendFile(path.resolve(__dirname, "build", "index.html"));
   });
 }
-
-// app.get("*", (req, res) => {
-//   res.render("notfound");
-// });
 
 app.listen(process.env.PORT, err => {
   if (err) {
