@@ -1,4 +1,6 @@
 require('dotenv').config();
+const axios = require("axios");
+const _ = require("lodash");
 
 module.exports.team = (req, res) => {
     Team.find({}, (err, team) => {
@@ -84,4 +86,18 @@ module.exports.ideas = (req, res) => {
             return res.status(200).json({ideas: ideas, message: 'success'});
         }
     });
+}
+
+module.exports.gettingStartedWithCP = (req, res) =>{ 
+    axios.get(process.env.HACKERRANK_GSCP).then(response => {
+        let data = [];
+        response.data.models.forEach((model, i) => {
+            data.push(_.pick(model, ['rank', 'score', 'hacker', 'level']));
+            if(response.data.models.length === i+1){
+                return res.status(200).json({leaderboard: data});
+            }
+        })
+    }).catch(err => {
+        return res.status(400).json({leaderboard: null});
+    })
 }
