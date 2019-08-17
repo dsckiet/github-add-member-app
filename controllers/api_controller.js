@@ -52,6 +52,13 @@ module.exports.about = (req, res) => {
     });
 }
 
+module.exports.stories = (req, res) => {
+    Story.find({}, (err, story) => {
+        if(err) return res.status(404).json({message: 'error', story: ''});
+        return res.json({story, message: 'success'});
+    });
+}
+
 module.exports.addidea = (req, res) => {
     const { name, email, technology, title, description } = req.body;
     if(!name || !email || !technology || !title || !description){

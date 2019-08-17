@@ -17,6 +17,8 @@ router.post('/addidea', apiController.addidea);
 //get ideas route
 router.get('/ideas', apiController.ideas);
 
+router.get('/stories', apiController.stories);
+
 router.get('/gscpHackerrank', apiController.gettingStartedWithCP);
 
 module.exports = router;
