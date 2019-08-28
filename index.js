@@ -52,6 +52,7 @@ app.use("/admin", require("./routes/admin"));
 app.use("/cloud-study-jam", require("./routes/studyJam"));
 app.use("/api", require("./routes/api/admin_api"));
 app.use("/api/v1", require("./routes/api/v1/web_api"));
+app.use("/api/v1/devio", require("./routes/api/v1/events"));
 
 if (process.env.NODE_ENV === "production") {
   // js and css files
