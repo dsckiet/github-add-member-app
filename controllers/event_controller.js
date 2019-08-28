@@ -1,7 +1,7 @@
 require('dotenv').config();
 const Event = require('../models/Event');
 const nodemailer = require("nodemailer");
-const DevIO = require('../models/DevIO');
+const DevIO = require('../models/Devio');
 const qrcode = require("qrcode");
 
 const transporter = nodemailer.createTransport({
