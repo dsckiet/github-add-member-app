@@ -37,7 +37,7 @@ module.exports.register = async (req, res) => {
                 let from = `DSCKIET <${process.env.user}>`, 
                     to = receiverMail; 
                 let subject = '[DEV iO Invitation] Invitation to attend Dev iO on 31/08/19',
-                    html = `Hey ${registered.name}\n\nYou are invited to attend the DEV iO'19 organised by Developer Student Clubs powered by Google Developers.\n\nUse the below QR code to get the entry during the event. Without this code, you will not be permitted any netry for the event.\n<img src=\"ci   d:${qr}\">`,
+                    html = '<html><body>Hey ' + registered.name + '<br/><r/>You are invited to attend the DEV iO\'19 organised by Developer Student Clubs powered by Google Developers.<br/><br/>Use the below QR code to get the entry during the event. Without this code, you will not be permitted to enter.<br/><img src="' + qr + '"></body></html>',
                     mailOptions = { from, to, subject, html };
                 try {
                     await transporter.sendMail(mailOptions);

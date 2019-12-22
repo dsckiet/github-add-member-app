@@ -44,7 +44,6 @@ const Team = require("./models/Team");
 const Story = require("./models/Story");
 const Event = require("./models/Event");
 const Idea = require("./models/Idea");
-const DevIO = require("./models/DevIO");
 
 
 // app.use("/", require("./routes/index"));
@@ -56,15 +55,15 @@ app.use("/api", require("./routes/api/admin_api"));
 app.use("/api/v1", require("./routes/api/v1/web_api"));
 app.use("/api/v1/devio", require("./routes/api/v1/events"));
 
-if (process.env.NODE_ENV === "production") {
-  // js and css files
-  app.use(express.static(path.join(__dirname, './build')));
-  // app.use(express.static("./build"));
-  // index.html
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "build", "index.html"));
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   // js and css files
+//   app.use(express.static(path.join(__dirname, './build')));
+//   // app.use(express.static("./build"));
+//   // index.html
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "build", "index.html"));
+//   });
+// }
 
 app.listen(process.env.PORT, err => {
   if (err) {
