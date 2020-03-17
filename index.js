@@ -24,19 +24,19 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 app.use(
-  session({
-    secret: process.env.SECRET_KEY,
-    resave: false,
-    saveUninitialized: false
-  })
+	session({
+		secret: process.env.SECRET_KEY,
+		resave: false,
+		saveUninitialized: false
+	})
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  res.locals.user = req.user || null;
-  next();
+	res.locals.user = req.user || null;
+	next();
 });
 
 const Admin = require("./models/Admin");
@@ -45,14 +45,13 @@ const Story = require("./models/Story");
 const Event = require("./models/Event");
 const Idea = require("./models/Idea");
 
-
 // app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
 app.use("/workshop", require("./routes/workshop"));
 app.use("/admin", require("./routes/admin"));
 app.use("/cloud-study-jam", require("./routes/studyJam"));
 app.use("/api", require("./routes/api/admin_api"));
-app.use("/api/v1", require("./routes/api/v1/web_api"));
+app.use("/api/v1_old", require("./routes/api/v1/web_api"));
 app.use("/api/v1/devio", require("./routes/api/v1/events"));
 
 // if (process.env.NODE_ENV === "production") {
@@ -66,11 +65,11 @@ app.use("/api/v1/devio", require("./routes/api/v1/events"));
 // }
 
 app.listen(process.env.PORT, err => {
-  if (err) {
-    console.log("Error in running server");
-    return;
-  }
-  console.log(
-    `Server is up and running on http://localhost:${process.env.PORT}`
-  );
+	if (err) {
+		console.log("Error in running server");
+		return;
+	}
+	console.log(
+		`Server is up and running on http://localhost:${process.env.PORT}`
+	);
 });
